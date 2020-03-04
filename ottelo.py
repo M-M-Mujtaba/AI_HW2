@@ -58,7 +58,7 @@ class Computer(object):
 
     def get_move(self):
         return utility.minimax(self.current_board, None, self.depthLimit, self.color,
-                               change_color(self.color), utility.score())
+                               change_color(self.color))
 
 
 class RandomPlayer(Computer):
@@ -393,6 +393,7 @@ def get_options(gui, board):
 
     gui.show_game()
     gui.update(board.board, 2, 2, now_playing.color)
+    return now_playing, other_player
 
 
 def run(gui, board, now_playing, other_player):
@@ -426,10 +427,14 @@ def restart():
     run()
 
 
+
 # define a main function
 def main():
     # initialize the pygame module
     gui = ui.Gui()
+    board = Board()
+    n_p, o_p = get_options(gui, board)
+    run(gui, board, n_p, o_p)
 
 
 # run the main function only if this module is executed as the main script
