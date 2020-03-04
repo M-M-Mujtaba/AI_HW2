@@ -22,10 +22,11 @@ class Gui:
 
         # colors
         self.BLACK = (0, 0, 0)
-        self.BACKGROUND = (0, 0, 255)
+        self.BACKGROUND = (0, 0, 51)
         self.WHITE = (255, 255, 255)
         self.BLUE = (0, 0, 255)
         self.YELLOW = (128, 128, 0)
+        self.PINK = (255,102,178)
 
         # display
         self.SCREEN_SIZE = (640, 480)
@@ -287,9 +288,9 @@ class Gui:
         pygame.display.flip()
 
     def showScore(self, blackStr, whiteStr, current_player_color):
-        black_background = self.YELLOW if current_player_color == WHITE else self.BACKGROUND
+        black_background = self.PINK if current_player_color == WHITE else self.BACKGROUND
         white_background = self.YELLOW if current_player_color == BLACK else self.BACKGROUND
-        text = self.scoreFont.render(blackStr, True, self.BLACK,
+        text = self.scoreFont.render(blackStr, True, self.WHITE,
                                      black_background)
         text2 = self.scoreFont.render(whiteStr, True, self.WHITE,
                                       white_background)
