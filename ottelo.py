@@ -331,7 +331,7 @@ def get_options(gui, board):
         other_player = Computer(BLACK, level*2 )
 
     gui.show_game()
-    gui.update(board.board, 2, 2, now_playing.color)
+    gui.update(board.board, board.get_valid_moves(now_playing.color),2, 2, now_playing.color)
     return now_playing, other_player
 
 
@@ -352,7 +352,7 @@ def run(gui, board, now_playing, other_player):
         if board.get_valid_moves(now_playing.color):
             score, board = now_playing.get_move()
             whites, blacks, empty = board.count_stones()
-            gui.update(board.board, blacks, whites,
+            gui.update(board.board,board.get_valid_moves(now_playing.color), blacks, whites,
                        now_playing.color)
         now_playing, other_player = other_player, now_playing
     gui.show_winner(winner)

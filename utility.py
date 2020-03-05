@@ -34,8 +34,7 @@ def our_minimax( board, parentBoard, depth, player, opponent, isMax, alfa=-INFIN
             get_score, newChild = our_minimax(child, board, depth - 1,opponent, player,not (isMax),alfa, beta)
             if get_score > score:
                 score = get_score
-                if parentBoard == None:
-                    bestChild = newChild
+                bestChild = child
             alfa = max(alfa, get_score)
             if alfa >= beta:
                 break
@@ -45,8 +44,7 @@ def our_minimax( board, parentBoard, depth, player, opponent, isMax, alfa=-INFIN
             get_score, newChild = our_minimax(child, board, depth - 1, opponent, player,not (isMax),alfa, beta)
             if get_score < score:
                 score = get_score
-                if parentBoard == None:
-                    bestChild = newChild
+                bestChild = child
             beta = min(beta, get_score)
             if alfa >= beta:
                 break

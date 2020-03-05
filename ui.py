@@ -53,6 +53,7 @@ class Gui:
                                                       "tip.bmp")).convert()
         self.clear_img = pygame.image.load(os.path.join("res",
                                                         "nada.bmp")).convert()
+        self.moves = []
 
     def show_options(self):
         """ Shows game options screen and returns chosen options
@@ -274,13 +275,20 @@ class Gui:
 
             time.sleep(.05)
 
-    def update(self, board, blacks, whites, current_player_color):
+    def update(self, board, moves,blacks, whites, current_player_color):
         """Updates screen
         """
+        if current_player_color == WHITE:
+            for move in self.moves:
+                self.clear_square(move)
+            self.moves = moves;
+            for move in self.moves:
+                self.put_stone((move[0],move[1]),board[move[0]][move[1]])
         for i in range(8):
             for j in range(8):
                 if board[i][j] != 0:
                     self.put_stone((i, j), board[i][j])
+
 
         blacks_str = '%02d ' % int(blacks)
         whites_str = '%02d ' % int(whites)
